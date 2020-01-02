@@ -205,14 +205,14 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 SWIFT_CLASS("_TtC8libMonyx13ServiceObject")
 @interface ServiceObject : NSObject
 /// ///////////////////////////////////////////////////////////////////////////////////////////////
-/// \code
-///  initializer
-///
-/// \endcode
+/// Methods
+/// ///////////////////////////////////////////////////////////////////////////////////////////////
+/// initializer.
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
 
+/// define Monyx liblary interface.
 SWIFT_CLASS("_TtC8libMonyx5Monyx")
 @interface Monyx : ServiceObject
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
@@ -431,14 +431,14 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 SWIFT_CLASS("_TtC8libMonyx13ServiceObject")
 @interface ServiceObject : NSObject
 /// ///////////////////////////////////////////////////////////////////////////////////////////////
-/// \code
-///  initializer
-///
-/// \endcode
+/// Methods
+/// ///////////////////////////////////////////////////////////////////////////////////////////////
+/// initializer.
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
 
+/// define Monyx liblary interface.
 SWIFT_CLASS("_TtC8libMonyx5Monyx")
 @interface Monyx : ServiceObject
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
