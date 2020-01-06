@@ -8,15 +8,16 @@ libMonyx is available through the [paveljo Specs Repo](https://github.com/pavelj
 
 To install the Specs repo run:
 
-``pod repo add paveljo https://github.com/paveljo/Specs.git``
+`pod repo add paveljo https://github.com/paveljo/Specs.git`
 
 or add to Podfile:
 
-``source 'https://github.com/paveljo/Specs.git'``
+`source 'https://github.com/paveljo/Specs.git'`
 
 To install the pod, add following line to your Podfile:
 
-``pod 'libMonyx'``
+`pod 'libMonyx'`
 
 # License
+
 libMonyx is available under the MIT license. See the LICENSE file for more info.
