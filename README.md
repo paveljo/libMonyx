@@ -4,7 +4,7 @@ Monyx Mobile SDK is a complete software library to allow mobile devices running 
 
 # Installation
 
-libMonyx is available through the [https://github.com/paveljo/specs](paveljo Specs Repo)
+libMonyx is available through the [paveljo Specs Repo](https://github.com/paveljo/specs)
 
 To install the Specs repo run:
 
