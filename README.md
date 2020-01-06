@@ -16,7 +16,9 @@ or add to Podfile:
 
 To install the pod, add following line to your Podfile:
 
-`pod 'libMonyx'`
+```
+pod 'libMonyx'
+```
 
 # License
 
