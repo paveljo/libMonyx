@@ -10,8 +10,9 @@ To install the Specs repo run:
 ```
 pod repo add paveljo https://github.com/paveljo/Specs.git
 ```
-or add to following line to your Podfile:
+or add to following lines to your Podfile:
 ```
+source 'https://github.com/CocoaPods/Specs.git'
 source 'https://github.com/paveljo/Specs.git'
 ```
 To install the pod, add following line to your Podfile:
