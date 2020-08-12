@@ -18,43 +18,43 @@
 		</data>
 		<key>Modules/libMonyx.swiftmodule/arm.swiftdoc</key>
 		<data>
-		3IN0TRHfBkEltQyZ8AqddbGYidQ=
+		z+eqAF2ECmTtM3xjm6Hc30GoI5A=
 		</data>
 		<key>Modules/libMonyx.swiftmodule/arm.swiftmodule</key>
 		<data>
-		Tk+fG+1Nx8gX3ZLiH8k9pfCDoQA=
+		dOQOYv0Au1YPBo3S+nVD/E1tDq4=
 		</data>
 		<key>Modules/libMonyx.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<data>
-		v8qW2bocBIN/sAiMs5OILD1GjLE=
+		EyISoaTd/jce8ty45e2lpWPnieA=
 		</data>
 		<key>Modules/libMonyx.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<data>
-		LPYR2UInnaoM0vK4MqyuQUALGEw=
+		iB547etYt48PtyAtR+7Iwr+WOrs=
 		</data>
 		<key>Modules/libMonyx.swiftmodule/arm64.swiftdoc</key>
 		<data>
-		v8qW2bocBIN/sAiMs5OILD1GjLE=
+		EyISoaTd/jce8ty45e2lpWPnieA=
 		</data>
 		<key>Modules/libMonyx.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		LPYR2UInnaoM0vK4MqyuQUALGEw=
+		iB547etYt48PtyAtR+7Iwr+WOrs=
 		</data>
 		<key>Modules/libMonyx.swiftmodule/armv7-apple-ios.swiftdoc</key>
 		<data>
-		3IN0TRHfBkEltQyZ8AqddbGYidQ=
+		z+eqAF2ECmTtM3xjm6Hc30GoI5A=
 		</data>
 		<key>Modules/libMonyx.swiftmodule/armv7-apple-ios.swiftmodule</key>
 		<data>
-		Tk+fG+1Nx8gX3ZLiH8k9pfCDoQA=
+		dOQOYv0Au1YPBo3S+nVD/E1tDq4=
 		</data>
 		<key>Modules/libMonyx.swiftmodule/armv7.swiftdoc</key>
 		<data>
-		3IN0TRHfBkEltQyZ8AqddbGYidQ=
+		z+eqAF2ECmTtM3xjm6Hc30GoI5A=
 		</data>
 		<key>Modules/libMonyx.swiftmodule/armv7.swiftmodule</key>
 		<data>
-		Tk+fG+1Nx8gX3ZLiH8k9pfCDoQA=
+		dOQOYv0Au1YPBo3S+nVD/E1tDq4=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -89,110 +89,110 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			3IN0TRHfBkEltQyZ8AqddbGYidQ=
+			z+eqAF2ECmTtM3xjm6Hc30GoI5A=
 			</data>
 			<key>hash2</key>
 			<data>
-			t4t1Sfhu3Ew1hQNVJhEcSdVL/S8vkNaYYMf/J5W/Ygo=
+			T8RBALraNGcY5W/ZIRPFy/AR/UX4rkHbYuEEPDa2VQg=
 			</data>
 		</dict>
 		<key>Modules/libMonyx.swiftmodule/arm.swiftmodule</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			Tk+fG+1Nx8gX3ZLiH8k9pfCDoQA=
+			dOQOYv0Au1YPBo3S+nVD/E1tDq4=
 			</data>
 			<key>hash2</key>
 			<data>
-			4FnnrFUkBJtWUPUYO4LZ+LESV0ItXMZDvPQ2GMTbz14=
+			4toy9CQ0BV5pIHDHlXDODQ0mZKmX5+jqLpLtzVYH+ZE=
 			</data>
 		</dict>
 		<key>Modules/libMonyx.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			v8qW2bocBIN/sAiMs5OILD1GjLE=
+			EyISoaTd/jce8ty45e2lpWPnieA=
 			</data>
 			<key>hash2</key>
 			<data>
-			ehLWVgispCXlnhSl/xPMQBUUYU9+SONUs9XLNYPvKJA=
+			SutKWsH0A9uo/103CMuDIYbDUpiVth03c+EEKkum/78=
 			</data>
 		</dict>
 		<key>Modules/libMonyx.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			LPYR2UInnaoM0vK4MqyuQUALGEw=
+			iB547etYt48PtyAtR+7Iwr+WOrs=
 			</data>
 			<key>hash2</key>
 			<data>
-			Ut8n5cDcszkZEO4Y4Sdifu0TlivZmCamwDT3mSOocRA=
+			jUFpOQTSTTOBhpNuHwXog6uYHHYZHzi/fZo7Ea2z5pI=
 			</data>
 		</dict>
 		<key>Modules/libMonyx.swiftmodule/arm64.swiftdoc</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			v8qW2bocBIN/sAiMs5OILD1GjLE=
+			EyISoaTd/jce8ty45e2lpWPnieA=
 			</data>
 			<key>hash2</key>
 			<data>
-			ehLWVgispCXlnhSl/xPMQBUUYU9+SONUs9XLNYPvKJA=
+			SutKWsH0A9uo/103CMuDIYbDUpiVth03c+EEKkum/78=
 			</data>
 		</dict>
 		<key>Modules/libMonyx.swiftmodule/arm64.swiftmodule</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			LPYR2UInnaoM0vK4MqyuQUALGEw=
+			iB547etYt48PtyAtR+7Iwr+WOrs=
 			</data>
 			<key>hash2</key>
 			<data>
-			Ut8n5cDcszkZEO4Y4Sdifu0TlivZmCamwDT3mSOocRA=
+			jUFpOQTSTTOBhpNuHwXog6uYHHYZHzi/fZo7Ea2z5pI=
 			</data>
 		</dict>
 		<key>Modules/libMonyx.swiftmodule/armv7-apple-ios.swiftdoc</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			3IN0TRHfBkEltQyZ8AqddbGYidQ=
+			z+eqAF2ECmTtM3xjm6Hc30GoI5A=
 			</data>
 			<key>hash2</key>
 			<data>
-			t4t1Sfhu3Ew1hQNVJhEcSdVL/S8vkNaYYMf/J5W/Ygo=
+			T8RBALraNGcY5W/ZIRPFy/AR/UX4rkHbYuEEPDa2VQg=
 			</data>
 		</dict>
 		<key>Modules/libMonyx.swiftmodule/armv7-apple-ios.swiftmodule</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			Tk+fG+1Nx8gX3ZLiH8k9pfCDoQA=
+			dOQOYv0Au1YPBo3S+nVD/E1tDq4=
 			</data>
 			<key>hash2</key>
 			<data>
-			4FnnrFUkBJtWUPUYO4LZ+LESV0ItXMZDvPQ2GMTbz14=
+			4toy9CQ0BV5pIHDHlXDODQ0mZKmX5+jqLpLtzVYH+ZE=
 			</data>
 		</dict>
 		<key>Modules/libMonyx.swiftmodule/armv7.swiftdoc</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			3IN0TRHfBkEltQyZ8AqddbGYidQ=
+			z+eqAF2ECmTtM3xjm6Hc30GoI5A=
 			</data>
 			<key>hash2</key>
 			<data>
-			t4t1Sfhu3Ew1hQNVJhEcSdVL/S8vkNaYYMf/J5W/Ygo=
+			T8RBALraNGcY5W/ZIRPFy/AR/UX4rkHbYuEEPDa2VQg=
 			</data>
 		</dict>
 		<key>Modules/libMonyx.swiftmodule/armv7.swiftmodule</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			Tk+fG+1Nx8gX3ZLiH8k9pfCDoQA=
+			dOQOYv0Au1YPBo3S+nVD/E1tDq4=
 			</data>
 			<key>hash2</key>
 			<data>
-			4FnnrFUkBJtWUPUYO4LZ+LESV0ItXMZDvPQ2GMTbz14=
+			4toy9CQ0BV5pIHDHlXDODQ0mZKmX5+jqLpLtzVYH+ZE=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
