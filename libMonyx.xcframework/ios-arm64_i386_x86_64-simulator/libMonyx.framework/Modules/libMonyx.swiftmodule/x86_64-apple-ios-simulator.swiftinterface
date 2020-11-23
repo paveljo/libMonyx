@@ -1,0 +1,294 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.3 (swiftlang-1200.0.29.2 clang-1200.0.30.1)
+// swift-module-flags: -target x86_64-apple-ios10.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name libMonyx
+import CommonCrypto
+import Foundation
+import Swift
+import SystemConfiguration
+import UIKit
+@_exported import libMonyx
+final public class MachineFilter : Swift.CustomDebugStringConvertible {
+  final public let value: Swift.String?
+  final public let latitude: Swift.Double?
+  final public let longitude: Swift.Double?
+  final public let country: Swift.String?
+  final public let radius: Swift.Int?
+  final public let operatorId: Swift.Int64?
+  final public var debugDescription: Swift.String {
+    get
+  }
+  public init(value: Swift.String? = nil, latitude: Swift.Double? = nil, longitude: Swift.Double? = nil, country: Swift.String? = nil, radius: Swift.Int? = nil, operatorId: Swift.Int64? = nil)
+  @objc deinit
+}
+final public class Campaign : Swift.CustomDebugStringConvertible {
+  final public let id: Swift.Int64
+  final public let name: Swift.String
+  final public let title: Swift.String
+  final public let description: Swift.String
+  final public let punched: Swift.Int
+  final public let totalPunches: Swift.Int
+  final public let created: Foundation.Date?
+  final public let updated: Foundation.Date?
+  final public let expiration: Foundation.Date?
+  final public let imageUrl: Swift.String?
+  final public let punchCardId: Swift.Int
+  final public let lookAndFeel: libMonyx.LookAndFeel?
+  final public var debugDescription: Swift.String {
+    get
+  }
+  public init(id: Swift.Int64, name: Swift.String, title: Swift.String, description: Swift.String, punched: Swift.Int, totalPunches: Swift.Int, created: Foundation.Date?, updated: Foundation.Date?, expiration: Foundation.Date?, imageUrl: Swift.String?, punchCardId: Swift.Int, lookAndFeel: libMonyx.LookAndFeel?)
+  @objc deinit
+}
+final public class Card : Swift.CustomDebugStringConvertible {
+  final public let pan: Swift.String
+  final public let month: Swift.String
+  final public let year: Swift.String
+  final public let cvv: Swift.String
+  final public let email: Swift.String
+  final public var debugDescription: Swift.String {
+    get
+  }
+  public init(pan: Swift.String, month: Swift.String, year: Swift.String, cvv: Swift.String, email: Swift.String)
+  @objc deinit
+}
+final public class Product : Swift.CustomDebugStringConvertible {
+  final public let machineProductId: Swift.Int64
+  final public let id: Swift.Int64
+  final public let name: Swift.String?
+  final public let department: Swift.String?
+  final public let cashPrice: Swift.Double?
+  final public let cardPrice: Swift.Double?
+  final public let exPrepaidPrice: Swift.Double?
+  final public let machinePrice: Swift.Double?
+  final public let preapidPrice: Swift.Int?
+  final public let commissionValue: Swift.Double?
+  final public let paCode: Swift.String?
+  final public let opButtonCode: Swift.String?
+  final public let opRowCode: Swift.Int?
+  final public let opColCode: Swift.Int?
+  final public let imageUrl: Swift.String?
+  final public let ageVerification: Swift.Int64?
+  final public let memberType: Swift.Bool
+  final public let image: Swift.String?
+  final public let codeInMap: Swift.Int64?
+  final public let missingProduct: Swift.Int?
+  final public let vendOut: Swift.Bool
+  final public var debugDescription: Swift.String {
+    get
+  }
+  public init(machineProductId: Swift.Int64, id: Swift.Int64, name: Swift.String?, department: Swift.String?, cashPrice: Swift.Double?, cardPrice: Swift.Double?, exPrepaidPrice: Swift.Double?, machinePrice: Swift.Double?, preapidPrice: Swift.Int?, commissionValue: Swift.Double?, paCode: Swift.String?, opButtonCode: Swift.String?, opRowCode: Swift.Int?, opColCode: Swift.Int?, imageUrl: Swift.String?, ageVerification: Swift.Int64?, memberType: Swift.Bool, image: Swift.String?, codeInMap: Swift.Int64?, missingProduct: Swift.Int?, vendOut: Swift.Bool)
+  @objc deinit
+}
+public class PaymentMethod : Swift.CustomDebugStringConvertible {
+  public enum PaymentType : Swift.Int {
+    case UNKNOWN, MONYX, CREDIT_CARD, PAYPAL, PREPAID
+    public typealias RawValue = Swift.Int
+    public init?(rawValue: Swift.Int)
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+  final public let id: Swift.String
+  final public let number: Swift.String
+  final public let type: libMonyx.PaymentMethod.PaymentType
+  public var debugDescription: Swift.String {
+    get
+  }
+  public init(id: Swift.String, number: Swift.String, type: libMonyx.PaymentMethod.PaymentType)
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers public class ServiceObject : ObjectiveC.NSObject {
+  @objc override dynamic public init()
+  public func release(_ creator_: Swift.AnyObject)
+  @objc deinit
+}
+final public class MonyxResult : Swift.CustomDebugStringConvertible {
+  public enum ResultType {
+    case UNKNOWN, SUCCESS, FAILURE, NETWORK_FAILED, ACCESS_DENIED, SDK_NOT_READY, SERVER_ERROR, BAD_INPUT, BUSY, NOT_LOGGED_IN, TIMEOUT
+    public static func == (a: libMonyx.MonyxResult.ResultType, b: libMonyx.MonyxResult.ResultType) -> Swift.Bool
+    public var hashValue: Swift.Int {
+      get
+    }
+    public func hash(into hasher: inout Swift.Hasher)
+  }
+  final public let type: libMonyx.MonyxResult.ResultType
+  final public let message: Swift.String?
+  final public var debugDescription: Swift.String {
+    get
+  }
+  public init(type: libMonyx.MonyxResult.ResultType, message: Swift.String? = nil)
+  @objc deinit
+}
+final public class Image : Swift.CustomDebugStringConvertible {
+  final public let file: Swift.String
+  final public let width: Swift.Int
+  final public let height: Swift.Int
+  final public let wasUploaded: Swift.Bool
+  final public let dpi: Swift.Int
+  final public let iOS: Swift.Bool
+  final public var debugDescription: Swift.String {
+    get
+  }
+  public init(file: Swift.String, width: Swift.Int, height: Swift.Int, wasUploaded: Swift.Bool, dpi: Swift.Int, iOS: Swift.Bool)
+  @objc deinit
+}
+@objc final public class Monyx : libMonyx.ServiceObject {
+  public enum EnvironmentType : Swift.Int {
+    case TESTING, PRODUCTION
+    public typealias RawValue = Swift.Int
+    public init?(rawValue: Swift.Int)
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+  public init(delegate: libMonyx.MonyxDelegate, apiKey: Swift.String, environment: libMonyx.Monyx.EnvironmentType)
+  final public func getVersion() -> Swift.String?
+  final public func getBuild() -> Swift.String?
+  final public func isLoggedIn() -> Swift.Bool
+  final public func login(countryCode: Swift.String, phoneNumber: Swift.String)
+  final public func verify(otp: Swift.String, country: Swift.String, countryCode: Swift.String, phoneNumber: Swift.String)
+  final public func logout()
+  final public func getPaymentMethods()
+  final public func getMachines(filter: libMonyx.MachineFilter? = nil)
+  final public func getMachineProducts(_ id: Swift.Int64)
+  final public func getTransactions(filter: libMonyx.TransactionFilter? = nil)
+  final public func getOrder(orderId: Swift.String)
+  final public func placeOrder(monyxId: Swift.Int64, paymentMethod: libMonyx.PaymentMethod, amount: Swift.Double)
+  final public func addCreditCard(card: libMonyx.Card)
+  final public func removeCard(id: Swift.String)
+  final public func deposit(depositCard: libMonyx.DepositCard, amount: Swift.Double, chargedCardId: Swift.String)
+  override final public func release(_ creator_: Swift.AnyObject)
+  @objc deinit
+  @objc override dynamic public init()
+}
+final public class PrepaidCard : libMonyx.DepositCard {
+  final public let isActive: Swift.Bool
+  final public let created: Foundation.Date
+  final public let isMoney: Swift.Bool
+  override final public var debugDescription: Swift.String {
+    get
+  }
+  public init(id: Swift.String, number: Swift.String, type: libMonyx.PaymentMethod.PaymentType, balance: Swift.Int64, isActive: Swift.Bool, created: Foundation.Date, currency: Swift.String, currencyDecimalDigits: Swift.Int, isMoney: Swift.Bool)
+  override public init(id: Swift.String, number: Swift.String, type: libMonyx.PaymentMethod.PaymentType, balance: Swift.Int64, currency: Swift.String, currencyDecimalDigits: Swift.Int)
+  @objc deinit
+}
+final public class Machine : Swift.CustomDebugStringConvertible {
+  public enum MachineType : Swift.Int {
+    case HOT_DRINKS, COLD_DRINKS, SNACKS, ICE_CREAM, MILK_PRODUCTS, SANDWICHES, FOOD, AMUSEMENT, ALCOHOL, CIGARETTES, COMBO, AIR, ELECTRICITY, OTHER, RECYCLING, WATER_FILLING_STATION, CAR_WASH_MACHINE, LAUNDRY_MACHINE, CELLULAR_ACCESSORIES, PHARMACY, TV_AND_INTERNET_SERVICES, PPE, MASSAGE_CHAIRS, ICE, PHOTO_BOOTH, PICTURES, PHOTOCOPIES, FLOWERS, CAR_VACUUM_CLEANER, WEIGHT, LOCKERS, ACCESS_CONTROL, GOLF_BALL_DISPENSER, DOG_WASH, FRESH_JUICE, GAMING, MICRO_MARKETS
+    public typealias RawValue = Swift.Int
+    public init?(rawValue: Swift.Int)
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+  final public let id: Swift.Int64
+  final public let monyxId: Swift.Int64
+  final public let operatorName: Swift.String
+  final public let isWalletAllowed: Swift.Bool
+  final public let latitude: Swift.Double
+  final public let longitude: Swift.Double
+  final public let type: libMonyx.Machine.MachineType
+  final public let campaigns: [libMonyx.Campaign]
+  final public var debugDescription: Swift.String {
+    get
+  }
+  public init(id: Swift.Int64, monyxId: Swift.Int64, operatorName: Swift.String, isWalletAllowed: Swift.Bool, latitude: Swift.Double, longitude: Swift.Double, type: libMonyx.Machine.MachineType, campaigns: [libMonyx.Campaign])
+  @objc deinit
+}
+final public class TransactionFilter : Swift.CustomDebugStringConvertible {
+  final public let machineId: Swift.Int64?
+  final public let paymentMethodId: Swift.String?
+  final public let paymentType: libMonyx.PaymentMethod.PaymentType?
+  final public let limit: Swift.Int?
+  final public let transactionsBefore: Foundation.Date?
+  final public var debugDescription: Swift.String {
+    get
+  }
+  public init(machineId: Swift.Int64? = nil, paymentMethodId: Swift.String? = nil, paymentType: libMonyx.PaymentMethod.PaymentType? = nil, limit: Swift.Int? = nil, transactionsBefore: Foundation.Date? = nil)
+  @objc deinit
+}
+final public class CreditCard : libMonyx.PaymentMethod {
+  final public let brand: Swift.String
+  override final public var debugDescription: Swift.String {
+    get
+  }
+  public init(id: Swift.String, number: Swift.String, type: libMonyx.PaymentMethod.PaymentType, brand: Swift.String)
+  override public init(id: Swift.String, number: Swift.String, type: libMonyx.PaymentMethod.PaymentType)
+  @objc deinit
+}
+public class DepositCard : libMonyx.PaymentMethod {
+  final public let balance: Swift.Int64
+  final public let currency: Swift.String
+  final public let currencyDecimalDigits: Swift.Int
+  override public var debugDescription: Swift.String {
+    get
+  }
+  public init(id: Swift.String, number: Swift.String, type: libMonyx.PaymentMethod.PaymentType, balance: Swift.Int64, currency: Swift.String, currencyDecimalDigits: Swift.Int)
+  override public init(id: Swift.String, number: Swift.String, type: libMonyx.PaymentMethod.PaymentType)
+  @objc deinit
+}
+final public class LookAndFeel : Swift.CustomDebugStringConvertible {
+  final public let imageUrl: Swift.String
+  final public let backgroudColor: Swift.String
+  final public let textColor: Swift.String
+  final public let receiptText: Swift.String
+  final public let punchCardText: Swift.String
+  final public let images: [libMonyx.Image]
+  final public var debugDescription: Swift.String {
+    get
+  }
+  public init(imageUrl: Swift.String, backgroudColor: Swift.String, textColor: Swift.String, receiptText: Swift.String, punchCardText: Swift.String, images: [libMonyx.Image])
+  @objc deinit
+}
+public protocol MonyxDelegate : AnyObject {
+  func onLogin(result: libMonyx.MonyxResult)
+  func onVerify(result: libMonyx.MonyxResult)
+  func onLogout(result: libMonyx.MonyxResult)
+  func onGetPaymentMethods(result: libMonyx.MonyxResult, paymentMethods: [libMonyx.PaymentMethod]?)
+  func onGetMachines(result: libMonyx.MonyxResult, machines: [libMonyx.Machine]?)
+  func onGetMachineProducts(result: libMonyx.MonyxResult, products: [libMonyx.Product]?)
+  func onPlaceOrder(result: libMonyx.MonyxResult, order: libMonyx.Order?)
+  func onDeposit(result: libMonyx.MonyxResult, balance: Swift.Int64?)
+  func onGetOrder(result: libMonyx.MonyxResult, order: libMonyx.Order?)
+  func onGetTransactions(result: libMonyx.MonyxResult, transactions: [libMonyx.Order]?)
+  func onAddCreditCard(result: libMonyx.MonyxResult, card: libMonyx.CreditCard?)
+  func onRemoveCard(result: libMonyx.MonyxResult)
+}
+final public class Order : Swift.CustomDebugStringConvertible {
+  public enum Status : Swift.Int {
+    case UNKNOWN, COMPLETED, CREATED, AUTHORIZED, CANCELED, FREE_TRANSACTION, TIMEOUT, INCOMPLETE
+    public typealias RawValue = Swift.Int
+    public init?(rawValue: Swift.Int)
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+  final public let id: Swift.String
+  final public let type: Swift.String
+  final public let status: libMonyx.Order.Status
+  final public let paymentSource: Swift.String
+  final public let amount: Swift.Int64
+  final public let date: Foundation.Date
+  final public let currency: Swift.String?
+  final public let itemsCount: Swift.Int
+  final public let endingBalance: Swift.Int64
+  final public var debugDescription: Swift.String {
+    get
+  }
+  public init(id: Swift.String, type: Swift.String, status: libMonyx.Order.Status, paymentSource: Swift.String, amount: Swift.Int64, date: Foundation.Date, currency: Swift.String?, itemsCount: Swift.Int, endingBalance: Swift.Int64)
+  @objc deinit
+}
+extension libMonyx.PaymentMethod.PaymentType : Swift.Equatable {}
+extension libMonyx.PaymentMethod.PaymentType : Swift.Hashable {}
+extension libMonyx.PaymentMethod.PaymentType : Swift.RawRepresentable {}
+extension libMonyx.MonyxResult.ResultType : Swift.Equatable {}
+extension libMonyx.MonyxResult.ResultType : Swift.Hashable {}
+extension libMonyx.Monyx.EnvironmentType : Swift.Equatable {}
+extension libMonyx.Monyx.EnvironmentType : Swift.Hashable {}
+extension libMonyx.Monyx.EnvironmentType : Swift.RawRepresentable {}
+extension libMonyx.Machine.MachineType : Swift.Equatable {}
+extension libMonyx.Machine.MachineType : Swift.Hashable {}
+extension libMonyx.Machine.MachineType : Swift.RawRepresentable {}
+extension libMonyx.Order.Status : Swift.Equatable {}
+extension libMonyx.Order.Status : Swift.Hashable {}
+extension libMonyx.Order.Status : Swift.RawRepresentable {}
