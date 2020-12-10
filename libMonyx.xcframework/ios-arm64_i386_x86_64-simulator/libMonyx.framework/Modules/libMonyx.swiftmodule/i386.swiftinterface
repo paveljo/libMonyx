@@ -14,10 +14,11 @@ final public class MachineFilter : Swift.CustomDebugStringConvertible {
   final public let country: Swift.String?
   final public let radius: Swift.Int?
   final public let operatorId: Swift.Int64?
+  final public let hwSerial: Swift.String?
   final public var debugDescription: Swift.String {
     get
   }
-  public init(value: Swift.String? = nil, latitude: Swift.Double? = nil, longitude: Swift.Double? = nil, country: Swift.String? = nil, radius: Swift.Int? = nil, operatorId: Swift.Int64? = nil)
+  public init(value: Swift.String? = nil, latitude: Swift.Double? = nil, longitude: Swift.Double? = nil, country: Swift.String? = nil, radius: Swift.Int? = nil, operatorId: Swift.Int64? = nil, hwSerial: Swift.String? = nil)
   @objc deinit
 }
 final public class Campaign : Swift.CustomDebugStringConvertible {
@@ -73,10 +74,18 @@ final public class Product : Swift.CustomDebugStringConvertible {
   final public let codeInMap: Swift.Int64?
   final public let missingProduct: Swift.Int?
   final public let vendOut: Swift.Bool
+  final public let retailPrice: Swift.Double?
+  final public let par: Swift.Int?
+  final public let missingStockByMdb: Swift.Int?
+  final public let mdbMissingStockLastUpdated: Foundation.Date?
+  final public let dexMissingStockLastUpdated: Foundation.Date?
+  final public let lastSaleDt: Foundation.Date?
+  final public let lastSaleMdbDt: Foundation.Date?
+  final public let slowMover: Swift.Bool?
   final public var debugDescription: Swift.String {
     get
   }
-  public init(machineProductId: Swift.Int64, id: Swift.Int64, name: Swift.String?, department: Swift.String?, cashPrice: Swift.Double?, cardPrice: Swift.Double?, exPrepaidPrice: Swift.Double?, machinePrice: Swift.Double?, preapidPrice: Swift.Int?, commissionValue: Swift.Double?, paCode: Swift.String?, opButtonCode: Swift.String?, opRowCode: Swift.Int?, opColCode: Swift.Int?, imageUrl: Swift.String?, ageVerification: Swift.Int64?, memberType: Swift.Bool, image: Swift.String?, codeInMap: Swift.Int64?, missingProduct: Swift.Int?, vendOut: Swift.Bool)
+  public init(machineProductId: Swift.Int64, id: Swift.Int64, name: Swift.String?, department: Swift.String?, cashPrice: Swift.Double?, cardPrice: Swift.Double?, exPrepaidPrice: Swift.Double?, machinePrice: Swift.Double?, preapidPrice: Swift.Int?, commissionValue: Swift.Double?, paCode: Swift.String?, opButtonCode: Swift.String?, opRowCode: Swift.Int?, opColCode: Swift.Int?, imageUrl: Swift.String?, ageVerification: Swift.Int64?, memberType: Swift.Bool, image: Swift.String?, codeInMap: Swift.Int64?, missingProduct: Swift.Int?, vendOut: Swift.Bool, retailPrice: Swift.Double?, par: Swift.Int?, missingStockByMdb: Swift.Int?, mdbMissingStockLastUpdated: Foundation.Date?, dexMissingStockLastUpdated: Foundation.Date?, lastSaleDt: Foundation.Date?, lastSaleMdbDt: Foundation.Date?, slowMover: Swift.Bool?)
   @objc deinit
 }
 public class PaymentMethod : Swift.CustomDebugStringConvertible {
