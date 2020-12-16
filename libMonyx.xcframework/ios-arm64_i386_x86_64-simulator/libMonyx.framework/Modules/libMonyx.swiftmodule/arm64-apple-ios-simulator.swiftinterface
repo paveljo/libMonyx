@@ -143,7 +143,7 @@ final public class Image : Swift.CustomDebugStringConvertible {
 }
 @objc final public class Monyx : libMonyx.ServiceObject {
   public enum EnvironmentType : Swift.Int {
-    case TESTING, PRODUCTION
+    case TEST, PROD
     public typealias RawValue = Swift.Int
     public init?(rawValue: Swift.Int)
     public var rawValue: Swift.Int {
@@ -162,7 +162,7 @@ final public class Image : Swift.CustomDebugStringConvertible {
   final public func getMachineProducts(_ id: Swift.Int64)
   final public func getTransactions(filter: libMonyx.TransactionFilter? = nil)
   final public func getOrder(orderId: Swift.String)
-  final public func placeOrder(monyxId: Swift.Int64, paymentMethod: libMonyx.PaymentMethod, amount: Swift.Double)
+  final public func placeOrder(monyxId: Swift.Int64, paymentMethod: libMonyx.PaymentMethod, amount: Swift.Int64)
   final public func addCreditCard(card: libMonyx.Card)
   final public func removeCard(id: Swift.String)
   final public func deposit(depositCard: libMonyx.DepositCard, amount: Swift.Double, chargedCardId: Swift.String)
@@ -192,16 +192,19 @@ final public class Machine : Swift.CustomDebugStringConvertible {
   }
   final public let id: Swift.Int64
   final public let monyxId: Swift.Int64
-  final public let operatorName: Swift.String
+  final public let operatorName: Swift.String?
   final public let isWalletAllowed: Swift.Bool
   final public let latitude: Swift.Double
   final public let longitude: Swift.Double
   final public let type: libMonyx.Machine.MachineType
   final public let campaigns: [libMonyx.Campaign]
+  final public let name: Swift.String?
+  final public let country: Swift.String?
+  final public let city: Swift.String?
   final public var debugDescription: Swift.String {
     get
   }
-  public init(id: Swift.Int64, monyxId: Swift.Int64, operatorName: Swift.String, isWalletAllowed: Swift.Bool, latitude: Swift.Double, longitude: Swift.Double, type: libMonyx.Machine.MachineType, campaigns: [libMonyx.Campaign])
+  public init(id: Swift.Int64, monyxId: Swift.Int64, operatorName: Swift.String?, isWalletAllowed: Swift.Bool, latitude: Swift.Double, longitude: Swift.Double, type: libMonyx.Machine.MachineType, campaigns: [libMonyx.Campaign], name: Swift.String?, country: Swift.String?, city: Swift.String?)
   @objc deinit
 }
 final public class TransactionFilter : Swift.CustomDebugStringConvertible {
