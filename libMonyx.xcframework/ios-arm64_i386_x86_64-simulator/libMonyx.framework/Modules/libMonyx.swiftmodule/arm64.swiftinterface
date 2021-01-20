@@ -21,6 +21,10 @@ final public class MachineFilter : Swift.CustomDebugStringConvertible {
   public init(value: Swift.String? = nil, latitude: Swift.Double? = nil, longitude: Swift.Double? = nil, country: Swift.String? = nil, radius: Swift.Int? = nil, operatorId: Swift.Int64? = nil, hwSerial: Swift.String? = nil)
   @objc deinit
 }
+@_inheritsConvenienceInitializers public class TDSGetCardErrorResponse : libMonyx.TDSGetCardBaseResponse {
+  required public init(from decoder: Swift.Decoder) throws
+  @objc deinit
+}
 final public class Campaign : Swift.CustomDebugStringConvertible {
   final public let id: Swift.Int64
   final public let name: Swift.String
@@ -38,6 +42,18 @@ final public class Campaign : Swift.CustomDebugStringConvertible {
     get
   }
   public init(id: Swift.Int64, name: Swift.String, title: Swift.String, description: Swift.String, punched: Swift.Int, totalPunches: Swift.Int, created: Foundation.Date?, updated: Foundation.Date?, expiration: Foundation.Date?, imageUrl: Swift.String?, punchCardId: Swift.Int, lookAndFeel: libMonyx.LookAndFeel?)
+  @objc deinit
+}
+public struct TDSCardHolder : Swift.Encodable {
+  public init(name: Swift.String, email: Swift.String, streetNumber: Swift.Int? = nil, streetName: Swift.String? = nil, city: Swift.String? = nil, territory: Swift.String? = nil, country: Swift.String? = nil, postal: Swift.String? = nil)
+  public func encode(to encoder: Swift.Encoder) throws
+}
+@_inheritsConvenienceInitializers public class TDSGetCardLocatorResponse : libMonyx.TDSGetCardBaseResponse {
+  required public init(from decoder: Swift.Decoder) throws
+  @objc deinit
+}
+@_inheritsConvenienceInitializers public class TDSAddCardChallengeResponse : libMonyx.TDSAddCardBaseResponse {
+  required public init(from decoder: Swift.Decoder) throws
   @objc deinit
 }
 final public class Card : Swift.CustomDebugStringConvertible {
@@ -128,6 +144,19 @@ final public class MonyxResult : Swift.CustomDebugStringConvertible {
   public init(type: libMonyx.MonyxResult.ResultType, message: Swift.String? = nil)
   @objc deinit
 }
+@_hasMissingDesignatedInitializers final public class ThreadsManager {
+  public static func isMainThread() -> Swift.Bool
+  public static func getCurrentThread() -> Foundation.Thread
+  public static func runOnMainThread(_ task_: @escaping () -> ())
+  public static func startSyncTask(_ task_: @escaping () -> ())
+  public static func startAsyncTask(_ task_: @escaping () -> ())
+  public static func synchronized(_ lock_: Any, _ task_: () -> ())
+  @objc deinit
+}
+public struct TDSPaymentCard : Swift.Encodable {
+  public init(number: Swift.String, month: Swift.Int, year: Swift.Int, securityCode: Swift.Int)
+  public func encode(to encoder: Swift.Encoder) throws
+}
 final public class Image : Swift.CustomDebugStringConvertible {
   final public let file: Swift.String
   final public let width: Swift.Int
@@ -153,7 +182,7 @@ final public class Image : Swift.CustomDebugStringConvertible {
   public init(delegate: libMonyx.MonyxDelegate, apiKey: Swift.String, environment: libMonyx.Monyx.EnvironmentType)
   final public func getVersion() -> Swift.String?
   final public func getBuild() -> Swift.String?
-  final public func isLoggedIn() -> Swift.Bool
+  final public func isLoggedIn()
   final public func login(countryCode: Swift.String, phoneNumber: Swift.String)
   final public func verify(otp: Swift.String, country: Swift.String, countryCode: Swift.String, phoneNumber: Swift.String)
   final public func logout()
@@ -164,6 +193,7 @@ final public class Image : Swift.CustomDebugStringConvertible {
   final public func getOrder(orderId: Swift.String)
   final public func placeOrder(monyxId: Swift.Int64, paymentMethod: libMonyx.PaymentMethod, amount: Swift.Int64)
   final public func addCreditCard(card: libMonyx.Card)
+  final public func addCreditCardTDSecure(paymentCard: libMonyx.TDSPaymentCard, cardHolder: libMonyx.TDSCardHolder)
   final public func removeCard(id: Swift.String)
   final public func deposit(depositCard: libMonyx.DepositCard, amount: Swift.Double, chargedCardId: Swift.String)
   override final public func release(_ creator_: Swift.AnyObject)
@@ -180,6 +210,17 @@ final public class PrepaidCard : libMonyx.DepositCard {
   public init(id: Swift.String, number: Swift.String, type: libMonyx.PaymentMethod.PaymentType, balance: Swift.Int64, isActive: Swift.Bool, created: Foundation.Date, currency: Swift.String, currencyDecimalDigits: Swift.Int, isMoney: Swift.Bool)
   override public init(id: Swift.String, number: Swift.String, type: libMonyx.PaymentMethod.PaymentType, balance: Swift.Int64, currency: Swift.String, currencyDecimalDigits: Swift.Int)
   @objc deinit
+}
+public class TDSGetCardBaseResponse : Swift.Decodable {
+  required public init(from decoder: Swift.Decoder) throws
+  @objc deinit
+}
+public enum TDSGetCardResponseFactory : Swift.Decodable {
+  case UNKNOWN
+  case LOCATOR(libMonyx.TDSGetCardLocatorResponse)
+  case CHALLENGE_REQUIRED(libMonyx.TDSGetCardChallengeResponse)
+  case ERROR(libMonyx.TDSGetCardErrorResponse)
+  public init(from decoder: Swift.Decoder) throws
 }
 final public class Machine : Swift.CustomDebugStringConvertible {
   public enum MachineType : Swift.Int {
@@ -207,6 +248,18 @@ final public class Machine : Swift.CustomDebugStringConvertible {
   public init(id: Swift.Int64, monyxId: Swift.Int64, operatorName: Swift.String?, isWalletAllowed: Swift.Bool, latitude: Swift.Double, longitude: Swift.Double, type: libMonyx.Machine.MachineType, campaigns: [libMonyx.Campaign], name: Swift.String?, country: Swift.String?, city: Swift.String?)
   @objc deinit
 }
+public class TDSAddCardBaseResponse : Swift.Decodable {
+  required public init(from decoder: Swift.Decoder) throws
+  @objc deinit
+}
+public enum TDSAddCardResponseFactory : Swift.Decodable {
+  case UNKNOWN
+  case FRICTIONLESS(libMonyx.TDSAddCardFrictionlessResponse)
+  case FINGERPRINT(libMonyx.TDSAddCardFingerprintResponse)
+  case CHALLENGE(libMonyx.TDSAddCardChallengeResponse)
+  case ERROR(libMonyx.TDSAddCardErrorResponse)
+  public init(from decoder: Swift.Decoder) throws
+}
 final public class TransactionFilter : Swift.CustomDebugStringConvertible {
   final public let machineId: Swift.Int64?
   final public let paymentMethodId: Swift.String?
@@ -228,6 +281,14 @@ final public class CreditCard : libMonyx.PaymentMethod {
   override public init(id: Swift.String, number: Swift.String, type: libMonyx.PaymentMethod.PaymentType)
   @objc deinit
 }
+@_inheritsConvenienceInitializers public class TDSAddCardFrictionlessResponse : libMonyx.TDSAddCardBaseResponse {
+  required public init(from decoder: Swift.Decoder) throws
+  @objc deinit
+}
+@_inheritsConvenienceInitializers public class TDSAddCardFingerprintResponse : libMonyx.TDSAddCardBaseResponse {
+  required public init(from decoder: Swift.Decoder) throws
+  @objc deinit
+}
 public class DepositCard : libMonyx.PaymentMethod {
   final public let balance: Swift.Int64
   final public let currency: Swift.String
@@ -237,6 +298,10 @@ public class DepositCard : libMonyx.PaymentMethod {
   }
   public init(id: Swift.String, number: Swift.String, type: libMonyx.PaymentMethod.PaymentType, balance: Swift.Int64, currency: Swift.String, currencyDecimalDigits: Swift.Int)
   override public init(id: Swift.String, number: Swift.String, type: libMonyx.PaymentMethod.PaymentType)
+  @objc deinit
+}
+@_inheritsConvenienceInitializers public class TDSGetCardChallengeResponse : libMonyx.TDSGetCardBaseResponse {
+  required public init(from decoder: Swift.Decoder) throws
   @objc deinit
 }
 final public class LookAndFeel : Swift.CustomDebugStringConvertible {
@@ -253,6 +318,7 @@ final public class LookAndFeel : Swift.CustomDebugStringConvertible {
   @objc deinit
 }
 public protocol MonyxDelegate : AnyObject {
+  func onCheckIsUserLogin(result: libMonyx.MonyxResult)
   func onLogin(result: libMonyx.MonyxResult)
   func onVerify(result: libMonyx.MonyxResult)
   func onLogout(result: libMonyx.MonyxResult)
@@ -290,6 +356,33 @@ final public class Order : Swift.CustomDebugStringConvertible {
   public init(id: Swift.String, type: Swift.String, status: libMonyx.Order.Status, paymentSource: Swift.String, amount: Swift.Int64, date: Foundation.Date, currency: Swift.String?, itemsCount: Swift.Int, endingBalance: Swift.Int64)
   @objc deinit
 }
+@_inheritsConvenienceInitializers public class TDSAddCardErrorResponse : libMonyx.TDSAddCardBaseResponse {
+  required public init(from decoder: Swift.Decoder) throws
+  @objc deinit
+}
+final public class Event<T> where T : AnyObject {
+  final public class Observer : Swift.Hashable {
+    final public func hash(into hasher: inout Swift.Hasher)
+    public init(_ owner_: Swift.AnyObject, _ action_: @escaping (T) -> ())
+    @objc deinit
+    final public var hashValue: Swift.Int {
+      get
+    }
+  }
+  final public var count: Swift.Int {
+    get
+  }
+  public init(_ sender_: T)
+  final public func attach(_ observer_: libMonyx.Event<T>.Observer)
+  final public func attachOnce(_ observer_: libMonyx.Event<T>.Observer)
+  final public func detach(_ observer_: libMonyx.Event<T>.Observer)
+  final public func detach(_ owner_: Swift.AnyObject)
+  final public func detachAll()
+  final public func invokeAll()
+  final public func invokeOnMainThread()
+  @objc deinit
+}
+public func == <T>(lhs: libMonyx.Event<T>.Observer, rhs: libMonyx.Event<T>.Observer) -> Swift.Bool where T : AnyObject
 extension libMonyx.PaymentMethod.PaymentType : Swift.Equatable {}
 extension libMonyx.PaymentMethod.PaymentType : Swift.Hashable {}
 extension libMonyx.PaymentMethod.PaymentType : Swift.RawRepresentable {}
