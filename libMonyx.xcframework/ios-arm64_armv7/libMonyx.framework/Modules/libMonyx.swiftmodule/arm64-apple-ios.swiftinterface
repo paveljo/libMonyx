@@ -1,11 +1,12 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.3 (swiftlang-1200.0.29.2 clang-1200.0.30.1)
+// swift-compiler-version: Apple Swift version 5.5.1 (swiftlang-1300.0.31.4 clang-1300.0.29.6)
 // swift-module-flags: -target arm64-apple-ios10.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name libMonyx
 import CommonCrypto
 import Foundation
 import Swift
 import SystemConfiguration
 import UIKit
+import _Concurrency
 @_exported import libMonyx
 final public class MachineFilter : Swift.CustomDebugStringConvertible {
   final public let value: Swift.String?
@@ -107,8 +108,8 @@ final public class Product : Swift.CustomDebugStringConvertible {
 public class PaymentMethod : Swift.CustomDebugStringConvertible {
   public enum PaymentType : Swift.Int {
     case UNKNOWN, MONYX, CREDIT_CARD, PAYPAL, PREPAID
-    public typealias RawValue = Swift.Int
     public init?(rawValue: Swift.Int)
+    public typealias RawValue = Swift.Int
     public var rawValue: Swift.Int {
       get
     }
@@ -131,10 +132,10 @@ final public class MonyxResult : Swift.CustomDebugStringConvertible {
   public enum ResultType {
     case UNKNOWN, SUCCESS, FAILURE, NETWORK_FAILED, ACCESS_DENIED, SDK_NOT_READY, SERVER_ERROR, BAD_INPUT, BUSY, NOT_LOGGED_IN, TIMEOUT
     public static func == (a: libMonyx.MonyxResult.ResultType, b: libMonyx.MonyxResult.ResultType) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
     public var hashValue: Swift.Int {
       get
     }
-    public func hash(into hasher: inout Swift.Hasher)
   }
   final public let type: libMonyx.MonyxResult.ResultType
   final public let message: Swift.String?
@@ -173,8 +174,8 @@ final public class Image : Swift.CustomDebugStringConvertible {
 @objc final public class Monyx : libMonyx.ServiceObject {
   public enum EnvironmentType : Swift.Int {
     case TEST, PROD
-    public typealias RawValue = Swift.Int
     public init?(rawValue: Swift.Int)
+    public typealias RawValue = Swift.Int
     public var rawValue: Swift.Int {
       get
     }
@@ -182,7 +183,7 @@ final public class Image : Swift.CustomDebugStringConvertible {
   public init(delegate: libMonyx.MonyxDelegate, apiKey: Swift.String, environment: libMonyx.Monyx.EnvironmentType)
   final public func getVersion() -> Swift.String?
   final public func getBuild() -> Swift.String?
-  final public func isLoggedIn()
+  final public func isLoggedIn() -> Swift.Bool
   final public func login(countryCode: Swift.String, phoneNumber: Swift.String)
   final public func verify(otp: Swift.String, country: Swift.String, countryCode: Swift.String, phoneNumber: Swift.String)
   final public func logout()
@@ -191,14 +192,13 @@ final public class Image : Swift.CustomDebugStringConvertible {
   final public func getMachineProducts(_ id: Swift.Int64)
   final public func getTransactions(filter: libMonyx.TransactionFilter? = nil)
   final public func getOrder(orderId: Swift.String)
-  final public func placeOrder(monyxId: Swift.Int64, paymentMethod: libMonyx.PaymentMethod, amount: Swift.Int64)
+  final public func placeOrder(monyxId: Swift.Int64, paymentMethod: libMonyx.PaymentMethod, amount: Swift.Int64, products: [libMonyx.RemoteVendProduct]?)
   final public func addCreditCard(card: libMonyx.Card)
   final public func addCreditCardTDSecure(paymentCard: libMonyx.TDSPaymentCard, cardHolder: libMonyx.TDSCardHolder)
   final public func removeCard(id: Swift.String)
   final public func deposit(depositCard: libMonyx.DepositCard, amount: Swift.Double, chargedCardId: Swift.String)
   override final public func release(_ creator_: Swift.AnyObject)
   @objc deinit
-  @objc override dynamic public init()
 }
 final public class PrepaidCard : libMonyx.DepositCard {
   final public let isActive: Swift.Bool
@@ -208,7 +208,6 @@ final public class PrepaidCard : libMonyx.DepositCard {
     get
   }
   public init(id: Swift.String, number: Swift.String, type: libMonyx.PaymentMethod.PaymentType, balance: Swift.Int64, isActive: Swift.Bool, created: Foundation.Date, currency: Swift.String, currencyDecimalDigits: Swift.Int, isMoney: Swift.Bool)
-  override public init(id: Swift.String, number: Swift.String, type: libMonyx.PaymentMethod.PaymentType, balance: Swift.Int64, currency: Swift.String, currencyDecimalDigits: Swift.Int)
   @objc deinit
 }
 public class TDSGetCardBaseResponse : Swift.Decodable {
@@ -225,8 +224,8 @@ public enum TDSGetCardResponseFactory : Swift.Decodable {
 final public class Machine : Swift.CustomDebugStringConvertible {
   public enum MachineType : Swift.Int {
     case HOT_DRINKS, COLD_DRINKS, SNACKS, ICE_CREAM, MILK_PRODUCTS, SANDWICHES, FOOD, AMUSEMENT, ALCOHOL, CIGARETTES, COMBO, AIR, ELECTRICITY, OTHER, RECYCLING, WATER_FILLING_STATION, CAR_WASH_MACHINE, LAUNDRY_MACHINE, CELLULAR_ACCESSORIES, PHARMACY, TV_AND_INTERNET_SERVICES, PPE, MASSAGE_CHAIRS, ICE, PHOTO_BOOTH, PICTURES, PHOTOCOPIES, FLOWERS, CAR_VACUUM_CLEANER, WEIGHT, LOCKERS, ACCESS_CONTROL, GOLF_BALL_DISPENSER, DOG_WASH, FRESH_JUICE, GAMING, MICRO_MARKETS
-    public typealias RawValue = Swift.Int
     public init?(rawValue: Swift.Int)
+    public typealias RawValue = Swift.Int
     public var rawValue: Swift.Int {
       get
     }
@@ -242,10 +241,13 @@ final public class Machine : Swift.CustomDebugStringConvertible {
   final public let name: Swift.String?
   final public let country: Swift.String?
   final public let city: Swift.String?
+  final public let hwSerial: Swift.String?
+  final public let supportRemoteVend: Swift.Bool
+  final public let multiVendCount: Swift.Int64
   final public var debugDescription: Swift.String {
     get
   }
-  public init(id: Swift.Int64, monyxId: Swift.Int64, operatorName: Swift.String?, isWalletAllowed: Swift.Bool, latitude: Swift.Double, longitude: Swift.Double, type: libMonyx.Machine.MachineType, campaigns: [libMonyx.Campaign], name: Swift.String?, country: Swift.String?, city: Swift.String?)
+  public init(id: Swift.Int64, monyxId: Swift.Int64, operatorName: Swift.String?, isWalletAllowed: Swift.Bool, latitude: Swift.Double, longitude: Swift.Double, type: libMonyx.Machine.MachineType, campaigns: [libMonyx.Campaign], name: Swift.String?, country: Swift.String?, city: Swift.String?, hwSerial: Swift.String?, supportRemoteVend: Swift.Bool, multiVendCount: Swift.Int64)
   @objc deinit
 }
 public class TDSAddCardBaseResponse : Swift.Decodable {
@@ -278,7 +280,6 @@ final public class CreditCard : libMonyx.PaymentMethod {
     get
   }
   public init(id: Swift.String, number: Swift.String, type: libMonyx.PaymentMethod.PaymentType, brand: Swift.String)
-  override public init(id: Swift.String, number: Swift.String, type: libMonyx.PaymentMethod.PaymentType)
   @objc deinit
 }
 @_inheritsConvenienceInitializers public class TDSAddCardFrictionlessResponse : libMonyx.TDSAddCardBaseResponse {
@@ -297,7 +298,6 @@ public class DepositCard : libMonyx.PaymentMethod {
     get
   }
   public init(id: Swift.String, number: Swift.String, type: libMonyx.PaymentMethod.PaymentType, balance: Swift.Int64, currency: Swift.String, currencyDecimalDigits: Swift.Int)
-  override public init(id: Swift.String, number: Swift.String, type: libMonyx.PaymentMethod.PaymentType)
   @objc deinit
 }
 @_inheritsConvenienceInitializers public class TDSGetCardChallengeResponse : libMonyx.TDSGetCardBaseResponse {
@@ -318,7 +318,6 @@ final public class LookAndFeel : Swift.CustomDebugStringConvertible {
   @objc deinit
 }
 public protocol MonyxDelegate : AnyObject {
-  func onCheckIsUserLogin(result: libMonyx.MonyxResult)
   func onLogin(result: libMonyx.MonyxResult)
   func onVerify(result: libMonyx.MonyxResult)
   func onLogout(result: libMonyx.MonyxResult)
@@ -332,11 +331,21 @@ public protocol MonyxDelegate : AnyObject {
   func onAddCreditCard(result: libMonyx.MonyxResult, card: libMonyx.CreditCard?)
   func onRemoveCard(result: libMonyx.MonyxResult)
 }
+final public class RemoteVendProduct : Swift.CustomDebugStringConvertible {
+  final public let codeInMap: Swift.Int64
+  final public let quantity: Swift.Int
+  final public let pulseLineNumber: Swift.Int
+  final public var debugDescription: Swift.String {
+    get
+  }
+  public init(codeInMap: Swift.Int64, quantity: Swift.Int, pulseLineNumber: Swift.Int)
+  @objc deinit
+}
 final public class Order : Swift.CustomDebugStringConvertible {
   public enum Status : Swift.Int {
     case UNKNOWN, COMPLETED, CREATED, AUTHORIZED, CANCELED, FREE_TRANSACTION, TIMEOUT, INCOMPLETE
-    public typealias RawValue = Swift.Int
     public init?(rawValue: Swift.Int)
+    public typealias RawValue = Swift.Int
     public var rawValue: Swift.Int {
       get
     }
