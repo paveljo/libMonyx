@@ -183,7 +183,7 @@ final public class Image : Swift.CustomDebugStringConvertible {
   public init(delegate: libMonyx.MonyxDelegate, apiKey: Swift.String, environment: libMonyx.Monyx.EnvironmentType)
   final public func getVersion() -> Swift.String?
   final public func getBuild() -> Swift.String?
-  final public func isLoggedIn() -> Swift.Bool
+  final public func isLoggedIn()
   final public func login(countryCode: Swift.String, phoneNumber: Swift.String)
   final public func verify(otp: Swift.String, country: Swift.String, countryCode: Swift.String, phoneNumber: Swift.String)
   final public func logout()
@@ -318,6 +318,7 @@ final public class LookAndFeel : Swift.CustomDebugStringConvertible {
   @objc deinit
 }
 public protocol MonyxDelegate : AnyObject {
+  func onCheckIsUserLogin(result: libMonyx.MonyxResult)
   func onLogin(result: libMonyx.MonyxResult)
   func onVerify(result: libMonyx.MonyxResult)
   func onLogout(result: libMonyx.MonyxResult)
