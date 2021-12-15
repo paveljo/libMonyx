@@ -173,7 +173,7 @@ final public class Image : Swift.CustomDebugStringConvertible {
 }
 @objc final public class Monyx : libMonyx.ServiceObject {
   public enum EnvironmentType : Swift.Int {
-    case TEST, PROD
+    case TEST, TESTS, PROD
     public init?(rawValue: Swift.Int)
     public typealias RawValue = Swift.Int
     public var rawValue: Swift.Int {
