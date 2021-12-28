@@ -244,10 +244,11 @@ final public class Machine : Swift.CustomDebugStringConvertible {
   final public let hwSerial: Swift.String?
   final public let supportRemoteVend: Swift.Bool
   final public let multiVendCount: Swift.Int64
+  final public let machineStatus: Swift.Bool
   final public var debugDescription: Swift.String {
     get
   }
-  public init(id: Swift.Int64, monyxId: Swift.Int64, operatorName: Swift.String?, isWalletAllowed: Swift.Bool, latitude: Swift.Double, longitude: Swift.Double, type: libMonyx.Machine.MachineType, campaigns: [libMonyx.Campaign], name: Swift.String?, country: Swift.String?, city: Swift.String?, hwSerial: Swift.String?, supportRemoteVend: Swift.Bool, multiVendCount: Swift.Int64)
+  public init(id: Swift.Int64, monyxId: Swift.Int64, operatorName: Swift.String?, isWalletAllowed: Swift.Bool, latitude: Swift.Double, longitude: Swift.Double, type: libMonyx.Machine.MachineType, campaigns: [libMonyx.Campaign], name: Swift.String?, country: Swift.String?, city: Swift.String?, hwSerial: Swift.String?, supportRemoteVend: Swift.Bool, multiVendCount: Swift.Int64, machineStatus: Swift.Bool)
   @objc deinit
 }
 public class TDSAddCardBaseResponse : Swift.Decodable {
