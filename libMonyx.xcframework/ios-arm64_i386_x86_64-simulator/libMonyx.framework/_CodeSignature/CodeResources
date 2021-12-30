@@ -6,7 +6,7 @@
 	<dict>
 		<key>Assets.car</key>
 		<data>
-		dS5qjR+LhHeByHzMeDdXDHRpu6c=
+		/I2hRhjKxX8NK/1Z/YefxLinst4=
 		</data>
 		<key>Headers/libMonyx-Swift.h</key>
 		<data>
@@ -18,7 +18,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		1k+rhFAQUJ7ZkE2Y+ShUsgcWoLk=
+		IT50qTI8s0j8qTMjGrIsIQRESRM=
 		</data>
 		<key>Modules/libMonyx.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
@@ -123,11 +123,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			dS5qjR+LhHeByHzMeDdXDHRpu6c=
+			/I2hRhjKxX8NK/1Z/YefxLinst4=
 			</data>
 			<key>hash2</key>
 			<data>
-			QEQyFty0Ho0a/x+Kr2Ihn9WQI9wELYH/8xqQShXJLfM=
+			qS0XLWnKGkx9cVTs/XVRQFGcOTjcCHQj/U6ovpqa/SA=
 			</data>
 		</dict>
 		<key>Headers/libMonyx-Swift.h</key>
