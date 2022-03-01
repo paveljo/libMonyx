@@ -16,10 +16,11 @@ final public class MachineFilter : Swift.CustomDebugStringConvertible {
   final public let radius: Swift.Int?
   final public let operatorId: Swift.Int64?
   final public let hwSerial: Swift.String?
+  final public let limit: Swift.Int?
   final public var debugDescription: Swift.String {
     get
   }
-  public init(value: Swift.String? = nil, latitude: Swift.Double? = nil, longitude: Swift.Double? = nil, country: Swift.String? = nil, radius: Swift.Int? = nil, operatorId: Swift.Int64? = nil, hwSerial: Swift.String? = nil)
+  public init(value: Swift.String? = nil, latitude: Swift.Double? = nil, longitude: Swift.Double? = nil, country: Swift.String? = nil, radius: Swift.Int? = nil, operatorId: Swift.Int64? = nil, hwSerial: Swift.String? = nil, limit: Swift.Int? = 50)
   @objc deinit
 }
 @_inheritsConvenienceInitializers public class TDSGetCardErrorResponse : libMonyx.TDSGetCardBaseResponse {
